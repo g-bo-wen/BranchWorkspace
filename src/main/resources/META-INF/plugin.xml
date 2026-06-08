@@ -1,19 +1,25 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.gbowen.branchworkspace</id>
+    <id>cn.gbk.branchworkspace</id>
     <name>BranchWorkspace</name>
     <vendor>g-bo-wen</vendor>
     <description><![CDATA[
-        <p><b>BranchWorkspace</b> is a repository that provides a pure template to make it easier to create a new plugin project.</p>
-        <p>The main goal of this template is to speed up the setup phase of plugin development for both new and experienced developers by preconfiguring the project scaffold and CI, linking to the proper documentation pages, and keeping everything organized.</p>
+        <p><b>BranchWorkspace</b> gives every Git branch its own local uncommitted workspace.</p>
+        <p>When a branch changes, the plugin saves local changes as a patch under <code>.idea/branch-workspace</code>, clears the old workspace, and restores the target branch workspace without using git stash.</p>
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>Git4Idea</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.gbowen.branchworkspace.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-        <postStartupActivity implementation="com.github.gbowen.branchworkspace.startup.MyProjectActivity" />
+        <toolWindow factoryClass="cn.gbk.branchworkspace.toolWindow.BranchWorkspaceToolWindowFactory"
+                    id="Branch Workspace"
+                    anchor="bottom"/>
+        <postStartupActivity implementation="cn.gbk.branchworkspace.startup.BranchWorkspaceStartupActivity" />
+        <projectConfigurable id="branch.workspace.settings"
+                             displayName="Branch Workspace"
+                             instance="cn.gbk.branchworkspace.settings.BranchWorkspaceConfigurable"/>
     </extensions>
 </idea-plugin>

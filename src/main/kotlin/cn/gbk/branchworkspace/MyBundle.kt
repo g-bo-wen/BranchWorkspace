@@ -1,4 +1,4 @@
-package com.github.gbowen.branchworkspace
+package cn.gbk.branchworkspace
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

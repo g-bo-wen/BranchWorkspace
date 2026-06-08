@@ -4,4 +4,6 @@
 
 ## [Unreleased]
 ### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+- Branch-specific workspace patches saved under `.idea/branch-workspace`.
+- Automatic save on branch leave and automatic restore on branch checkout.
+- Support for untracked files, settings, ToolWindow management, and restore failure notifications.
